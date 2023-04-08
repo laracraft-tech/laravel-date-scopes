@@ -45,7 +45,7 @@ You can change the default if you need in the published config file.
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-date-scopes-config"
+php artisan vendor:publish --tag="date-scopes-config"
 ```
 
 This is the contents of the published config file:
