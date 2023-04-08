@@ -37,7 +37,7 @@ trait DateScopes
             ];
         }
 
-        dd(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s')));
+//        dd(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s')));
 
         return $query->whereBetween(config('date-scopes.created_column'), $range);
     }
