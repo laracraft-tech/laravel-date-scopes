@@ -76,6 +76,8 @@ If you want to change the default range to inclusive set `DATE_SCOPES_DEFAULT_RA
 - [`seconds`](#seconds)
 - [`minutes`](#minutes)
 - [`hours`](#hours)
+- [`days`](#days)
+- [`weeks`](#weeks)
 - [`months`](#months)
 - [`quarters`](#quarters)
 - [`years`](#years)
@@ -166,7 +168,7 @@ Transaction::ofLast12Months(); // query transactions created during the last 12 
 Transaction::ofLastMonths(24); // query transactions created during the last N months
 ```
 
-### Quarter
+### Quarters
 
 ```php
 // query by QUARTERS
@@ -193,10 +195,10 @@ Transaction::ofLastDecade(); // query transactions created during the last decad
 Transaction::ofLastDecades(2); // query transactions created during the last N decades
 ```
 
-### Millennium
+### Millenniums
 
 ```php
-// query by MILLENNIUM
+// query by MILLENNIUMS
 Transaction::ofLastMillennium(); // query transactions created during the last millennium
 Transaction::ofLastMillenniums(2); // query transactions created during the last N millenniums
 ```
