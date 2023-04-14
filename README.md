@@ -40,7 +40,7 @@ The default for this package is **exclusive** approach,
 which means when you for instance query for the last 7 days it will **not include** the current day!
 You can change the default if you need in the published config file.
 
-### Config
+### Global configuration
 
 You can publish the config file with:
 
@@ -55,7 +55,7 @@ return [
     /**
      * If you want to include the current day/week/month/year etc. in the range,
      * you could use the inclusive range here as a default.
-     * Note that you can also optionally specify it for quite every scope we offer
+     * Note that you can also fluently specify the range for quite every scope we offer
      * directly when using the scope:
      * Transaction::ofLast7Days(DateRange::INCLUSIVE); (this works for all but the singular "ofLast"-scopes)
      * This will do an inclusive query, even though the global default range here is set to exclusive.
@@ -70,6 +70,20 @@ return [
 ```
 
 If you want to change the default range to inclusive set `DATE_SCOPES_DEFAULT_RANGE=inclusive` in your `.env`.
+
+### Fluent configuration
+
+As already mentioned above in the `default_range` config description text,
+you can also fluently specify the range for quite every scope we offer
+directly when using the scope:
+
+```php
+// This works for all "ofLast"-scopes, expect the singulars like "ofLastHour",
+// because it would not make sense for those.
+Transaction::ofLast7Days(DateRange::INCLUSIVE);
+```
+
+This will do an inclusive query (today-6 days), even though the global default range here was set to exclusive.
 
 ## Scopes
 

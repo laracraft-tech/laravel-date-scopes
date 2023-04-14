@@ -7,6 +7,23 @@ use Illuminate\Database\Eloquent\Builder;
 trait DateScopes
 {
     /**
+     * For example, if you subtract one month from March 31, you would get February 31, which is not a valid date.
+     * The subMonthsNoOverflow method for instance would instead return February 28 (or February 29 in a leap year),
+     * as it adjusts the day to the last day of the month when the resulting date would be invalid.
+     *
+     * In Carbon, the date units that can have this "overflow" behavior are months, years, decades, etc. because their lengths can vary.
+     * Days, hours, minutes, and seconds have fixed lengths, so they do not have this issue.
+     *
+     * @var array|string[]
+     */
+    private array $fixedLengthDateUnits = [
+        'second',
+        'minute',
+        'hour',
+        'day'
+    ];
+
+    /**
      * @param  Builder  $query Eloquent Builder
      * @param  string  $dateUnit A valid date unit, such as hour, day, month, year etc...
      * @param  int  $value How many hours, days etc. you want to get.
@@ -21,23 +38,25 @@ trait DateScopes
 
         $startFunc = 'startOf'.ucfirst($dateUnit);
         $endFunc = 'endOf'.ucfirst($dateUnit);
-        $subFunc = 'sub'.ucfirst($dateUnit).'s';
+
+        $applyNoOverflow = (in_array($dateUnit, $this->fixedLengthDateUnits)) ? 'NoOverflow' : '' ;
+        $subFunc = 'sub'.ucfirst($dateUnit).'s'.$applyNoOverflow;
 
         $sub = ($dateUnit === 'second') ? 0 : 1;
 
         if ($dateRange === DateRange::EXCLUSIVE) {
             $range = [
-                'from' => now()->$startFunc()->$subFunc($value),
-                'to' => now()->$endFunc()->$subFunc($sub),
+                'from' => now()->$subFunc($value)->$startFunc(),
+                'to' => now()->$subFunc($sub)->$endFunc(),
             ];
         } else {
             $range = [
-                'from' => now()->$startFunc()->$subFunc($value - $sub),
+                'from' => now()->$subFunc($value - $sub)->$startFunc(),
                 'to' => now()->$endFunc(),
             ];
         }
 
-//        dd(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s')));
+//        dd(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s'))->toArray());
 
         return $query->whereBetween(config('date-scopes.created_column'), $range);
     }
