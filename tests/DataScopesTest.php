@@ -98,25 +98,8 @@ beforeEach(function () {
         ->count(count($createdAtValues))
         ->state(new Sequence(...$createdAtValues))
         ->create();
-
-    Transaction::ofJustNow()->get();
-    Transaction::ofLast15Seconds(DateRange::INCLUSIVE)->get();
-    Transaction::ofLast15Seconds(DateRange::EXCLUSIVE)->get();
-    dd();
 });
 
-it('retrieves transactions of last x seconds', function () {
-//    expect(Transaction::ofJustNow()->get())->toHaveCount(1);
-//    expect(Transaction::ofLastSecond()->get())->toHaveCount(1);
-//    expect(Transaction::ofLast15Seconds(DateRange::INCLUSIVE)->get())->toHaveCount(2);
-//    expect(Transaction::ofLast15Seconds(DateRange::EXCLUSIVE)->get())->toHaveCount(2);
-
-
-//    Transaction::ofToday()->get();
-//    Transaction::ofYesterday()->get();
-//    Transaction::ofLast7Days()->get();
-});
-//
 it('covers all cases', function () {
     //TODO
     // Write tests for all kind of scopes

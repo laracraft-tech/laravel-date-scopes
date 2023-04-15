@@ -41,9 +41,7 @@ trait DateScopes
 
         $applyNoOverflow = (! in_array($dateUnit, $this->fixedLengthDateUnits)) ? 'NoOverflow' : '' ;
         $subFunc = 'sub'.ucfirst($dateUnit).'s'.$applyNoOverflow;
-
-        $sub = ($dateUnit === 'second') ? 0 : 1;
-//        $sub = 1;
+        $sub = 1;
 
         if ($dateRange === DateRange::EXCLUSIVE) {
             $range = [
@@ -57,7 +55,7 @@ trait DateScopes
             ];
         }
 
-//        dump(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s'))->toArray());
+        //dump(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s'))->toArray());
 
         return $query->whereBetween(config('date-scopes.created_column'), $range);
     }
