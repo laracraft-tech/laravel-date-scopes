@@ -96,6 +96,7 @@ This will do an inclusive query (today-6 days), even though the global default r
 - [`quarters`](#quarters)
 - [`years`](#years)
 - [`decades`](#decades)
+- [`centuries`](#centuries)
 - [`millenniums`](#millenniums)
 - [`toNow/toDate`](#toNowtoDate)
  
