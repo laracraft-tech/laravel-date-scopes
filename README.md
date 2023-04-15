@@ -115,6 +115,7 @@ class Transaction extends Model
 
 ```php
 // query by SECONDS
+Transaction::ofJustNow(); // query transactions created just now
 Transaction::ofLastSecond(); // query transactions created during the last second
 Transaction::ofLast15Seconds(); // query transactions created during the last 15 seconds
 Transaction::ofLast30Seconds(); // query transactions created during the last 30 seconds
@@ -221,7 +222,7 @@ Transaction::ofLastMillenniums(2); // query transactions created during the last
 
 ```php
 // query by toNow/toDate
-Transaction::secondToNow(); // query transactions created during the start of the current second to now (not really usefull I guess)
+Transaction::secondToNow(); // query transactions created during the start of the current second to now (equivalent of just now)
 Transaction::minuteToNow(); // query transactions created during the start of the current minute to now
 Transaction::hourToNow(); // query transactions created during the start of the current hour to now
 Transaction::dayToNow(); // query transactions created during the start of the current day to now

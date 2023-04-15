@@ -43,6 +43,7 @@ trait DateScopes
         $subFunc = 'sub'.ucfirst($dateUnit).'s'.$applyNoOverflow;
 
         $sub = ($dateUnit === 'second') ? 0 : 1;
+//        $sub = 1;
 
         if ($dateRange === DateRange::EXCLUSIVE) {
             $range = [
@@ -56,13 +57,14 @@ trait DateScopes
             ];
         }
 
-//        dd(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s'))->toArray());
+//        dump(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s'))->toArray());
 
         return $query->whereBetween(config('date-scopes.created_column'), $range);
     }
 
     // START SECONDS
-    public function scopeOfLastSecond(Builder $query): Builder {return $query->ofLastSeconds(1);}
+    public function scopeOfJustNow(Builder $query): Builder {return $query->ofLastSeconds(1, DateRange::INCLUSIVE);}
+    public function scopeOfLastSecond(Builder $query): Builder {return $query->ofLastSeconds(1, DateRange::EXCLUSIVE);}
     public function scopeOfLast15Seconds(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastSeconds(15, $customRange);}
     public function scopeOfLast30Seconds(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastSeconds(30, $customRange);}
     public function scopeOfLast45Seconds(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastSeconds(45, $customRange);}
@@ -74,7 +76,7 @@ trait DateScopes
     }
 
     // START MINUTES
-    public function scopeOfLastMinute(Builder $query): Builder {return $query->ofLastMinutes(1);}
+    public function scopeOfLastMinute(Builder $query): Builder {return $query->ofLastMinutes(1, DateRange::EXCLUSIVE);}
     public function scopeOfLast15Minutes(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastMinutes(15, $customRange);}
     public function scopeOfLast30Minutes(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastMinutes(30, $customRange);}
     public function scopeOfLast45Minutes(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastMinutes(45, $customRange);}
@@ -86,7 +88,7 @@ trait DateScopes
     }
 
     // START HOURS
-    public function scopeOfLastHour(Builder $query): Builder {return $query->ofLastHours(1);}
+    public function scopeOfLastHour(Builder $query): Builder {return $query->ofLastHours(1, DateRange::EXCLUSIVE);}
     public function scopeOfLast6Hours(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastHours(6, $customRange);}
     public function scopeOfLast12Hours(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastHours(12, $customRange);}
     public function scopeOfLast18Hours(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastHours(18, $customRange);}
@@ -111,7 +113,7 @@ trait DateScopes
     }
 
     // START WEEKS
-    public function scopeOfLastWeek(Builder $query): Builder {return $query->ofLastWeeks(1);}
+    public function scopeOfLastWeek(Builder $query): Builder {return $query->ofLastWeeks(1, DateRange::EXCLUSIVE);}
     public function scopeOfLast2Weeks(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastWeeks(2, $customRange);}
     public function scopeOfLast3Weeks(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastWeeks(3, $customRange);}
     public function scopeOfLast4Weeks(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastWeeks(4, $customRange);}
@@ -122,7 +124,7 @@ trait DateScopes
     }
 
     // START MONTHS
-    public function scopeOfLastMonth(Builder $query): Builder {return $query->ofLastMonths(1);}
+    public function scopeOfLastMonth(Builder $query): Builder {return $query->ofLastMonths(1, DateRange::EXCLUSIVE);}
     public function scopeOfLast3Months(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastMonths(3, $customRange);}
     public function scopeOfLast6Months(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastMonths(6, $customRange);}
     public function scopeOfLast9Months(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastMonths(9, $customRange);}
@@ -134,7 +136,7 @@ trait DateScopes
     }
 
     // START QUARTER
-    public function scopeOfLastQuarter(Builder $query): Builder {return $query->ofLastQuarters(1);}
+    public function scopeOfLastQuarter(Builder $query): Builder {return $query->ofLastQuarters(1, DateRange::EXCLUSIVE);}
     public function scopeOfLast2Quarters(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastQuarters(2, $customRange);}
     public function scopeOfLast3Quarters(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastQuarters(3, $customRange);}
     public function scopeOfLast4Quarters(Builder $query, DateRange $customRange = null): Builder {return $query->ofLastQuarters(4, $customRange);}
@@ -145,7 +147,7 @@ trait DateScopes
     }
 
     // START YEARS
-    public function scopeOfLastYear(Builder $query): Builder {return $query->ofLastYears(1);}
+    public function scopeOfLastYear(Builder $query): Builder {return $query->ofLastYears(1, DateRange::EXCLUSIVE);}
 
     public function scopeOfLastYears(Builder $query, int $years, DateRange $customRange = null): Builder
     {
@@ -153,7 +155,7 @@ trait DateScopes
     }
 
     // START DECADE
-    public function scopeOfLastDecade(Builder $query): Builder {return $query->ofLastDecades(1);}
+    public function scopeOfLastDecade(Builder $query): Builder {return $query->ofLastDecades(1, DateRange::EXCLUSIVE);}
 
     public function scopeOfLastDecades(Builder $query, int $decades, DateRange $customRange = null): Builder
     {
@@ -161,7 +163,7 @@ trait DateScopes
     }
 
     // START MILLENNIUM
-    public function scopeOfLastMillennium(Builder $query): Builder {return $query->ofLastMillenniums(1);}
+    public function scopeOfLastMillennium(Builder $query): Builder {return $query->ofLastMillenniums(1, DateRange::EXCLUSIVE);}
 
     public function scopeOfLastMillenniums(Builder $query, int $millennium, DateRange $customRange = null): Builder
     {
