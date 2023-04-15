@@ -240,7 +240,7 @@ Transaction::monthToDate(); // query transactions created during the start of th
 Transaction::quarterToDate(); // query transactions created during the start of the current quarter till now
 Transaction::yearToDate(); // query transactions created during the start of the current year till now
 Transaction::decadeToDate(); // query transactions created during the start of the current decade till now
-Transaction::decadeToCentury(); // query transactions created during the start of the current century till now
+Transaction::centuryToDate(); // query transactions created during the start of the current century till now
 Transaction::millenniumToDate(); // query transactions created during the start of the current millennium till now
 ```
 
