@@ -20,7 +20,8 @@ trait DateScopes
         'second',
         'minute',
         'hour',
-        'day'
+        'day',
+        'week'
     ];
 
     /**
@@ -55,7 +56,8 @@ trait DateScopes
             ];
         }
 
-        //dump(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s'))->toArray());
+//        if (defined('DATE_SCOPE_DEBUG'))
+//            dd(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s'))->toArray());
 
         return $query->whereBetween(config('date-scopes.created_column'), $range);
     }
@@ -160,6 +162,14 @@ trait DateScopes
         return $query->ofLastUnit('decade', $decades, $customRange);
     }
 
+    // START CENTURIES
+    public function scopeOfLastCentury(Builder $query): Builder {return $query->ofLastCenturies(1, DateRange::EXCLUSIVE);}
+
+    public function scopeOfLastCenturies(Builder $query, int $centuries, DateRange $customRange = null): Builder
+    {
+        return $query->ofLastUnit('century', $centuries, $customRange);
+    }
+
     // START MILLENNIUM
     public function scopeOfLastMillennium(Builder $query): Builder {return $query->ofLastMillenniums(1, DateRange::EXCLUSIVE);}
 
@@ -179,5 +189,6 @@ trait DateScopes
     public function scopeQuarterToDate(Builder $query): Builder {return $query->ofLastQuarters(1, DateRange::INCLUSIVE);}
     public function scopeYearToDate(Builder $query): Builder {return $query->ofLastYears(1, DateRange::INCLUSIVE);}
     public function scopeDecadeToDate(Builder $query): Builder {return $query->ofLastDecades(1, DateRange::INCLUSIVE);}
+    public function scopeCenturyToDate(Builder $query): Builder {return $query->ofLastCenturies(1, DateRange::INCLUSIVE);}
     public function scopeMillenniumToDate(Builder $query): Builder {return $query->ofLastMillenniums(1, DateRange::INCLUSIVE);}
 }

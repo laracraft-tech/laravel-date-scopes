@@ -210,6 +210,14 @@ Transaction::ofLastDecade(); // query transactions created during the last decad
 Transaction::ofLastDecades(2); // query transactions created during the last N decades
 ```
 
+### Centuries
+
+```php
+// query by CENTURIES
+Transaction::ofLastCentury(); // query transactions created during the last century
+Transaction::ofLastCenturies(2); // query transactions created during the last N centuries
+```
+
 ### Millenniums
 
 ```php
@@ -222,16 +230,17 @@ Transaction::ofLastMillenniums(2); // query transactions created during the last
 
 ```php
 // query by toNow/toDate
-Transaction::secondToNow(); // query transactions created during the start of the current second to now (equivalent of just now)
-Transaction::minuteToNow(); // query transactions created during the start of the current minute to now
-Transaction::hourToNow(); // query transactions created during the start of the current hour to now
-Transaction::dayToNow(); // query transactions created during the start of the current day to now
-Transaction::weekToDate(); // query transactions created during the start of the current week to now
-Transaction::monthToDate(); // query transactions created during the start of the current month to now
-Transaction::quarterToDate(); // query transactions created during the start of the current quarter to now
-Transaction::yearToDate(); // query transactions created during the start of the current year to now
-Transaction::decadeToDate(); // query transactions created during the start of the current decade to now
-Transaction::millenniumToDate(); // query transactions created during the start of the current millennium to now
+Transaction::secondToNow(); // query transactions created during the start of the current second till now (equivalent of just now)
+Transaction::minuteToNow(); // query transactions created during the start of the current minute till now
+Transaction::hourToNow(); // query transactions created during the start of the current hour till now
+Transaction::dayToNow(); // query transactions created during the start of the current day till now
+Transaction::weekToDate(); // query transactions created during the start of the current week till now
+Transaction::monthToDate(); // query transactions created during the start of the current month till now
+Transaction::quarterToDate(); // query transactions created during the start of the current quarter till now
+Transaction::yearToDate(); // query transactions created during the start of the current year till now
+Transaction::decadeToDate(); // query transactions created during the start of the current decade till now
+Transaction::decadeToCentury(); // query transactions created during the start of the current century till now
+Transaction::millenniumToDate(); // query transactions created during the start of the current millennium till now
 ```
 
 ## Testing
