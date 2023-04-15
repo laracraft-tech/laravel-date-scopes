@@ -39,7 +39,7 @@ trait DateScopes
         $startFunc = 'startOf'.ucfirst($dateUnit);
         $endFunc = 'endOf'.ucfirst($dateUnit);
 
-        $applyNoOverflow = (in_array($dateUnit, $this->fixedLengthDateUnits)) ? 'NoOverflow' : '' ;
+        $applyNoOverflow = (! in_array($dateUnit, $this->fixedLengthDateUnits)) ? 'NoOverflow' : '' ;
         $subFunc = 'sub'.ucfirst($dateUnit).'s'.$applyNoOverflow;
 
         $sub = ($dateUnit === 'second') ? 0 : 1;
