@@ -4,6 +4,78 @@ namespace LaracraftTech\LaravelDateScopes;
 
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * @method static Builder ofLastUnit(string $dateUnit, int $value, DateRange $customRange = null)
+ * @method static Builder ofJustNow()
+ *
+ * @method static Builder ofLastSecond()
+ * @method static Builder ofLast15Seconds(DateRange $customRange = null)
+ * @method static Builder ofLast30Seconds(DateRange $customRange = null)
+ * @method static Builder ofLast45Seconds(DateRange $customRange = null)
+ * @method static Builder ofLast60Seconds(DateRange $customRange = null)
+ * @method static Builder ofLastSeconds(int $seconds, DateRange $customRange = null)
+ *
+ * @method static Builder ofLastMinute()
+ * @method static Builder ofLast15Minutes(DateRange $customRange = null)
+ * @method static Builder ofLast30Minutes(DateRange $customRange = null)
+ * @method static Builder ofLast45Minutes(DateRange $customRange = null)
+ * @method static Builder ofLast60Minutes(DateRange $customRange = null)
+ * @method static Builder ofLastMinutes(int $minutes, DateRange $customRange = null)
+ *
+ * @method static Builder ofLastHour()
+ * @method static Builder ofLast6Hours(DateRange $customRange = null)
+ * @method static Builder ofLast12Hours(DateRange $customRange = null)
+ * @method static Builder ofLast18Hours(DateRange $customRange = null)
+ * @method static Builder ofLast24Hours(DateRange $customRange = null)
+ * @method static Builder ofLastHours(int $hours, DateRange $customRange = null)
+ *
+ * @method static Builder ofToday()
+ * @method static Builder ofYesterday()
+ * @method static Builder ofLast7Days(DateRange $customRange = null)
+ * @method static Builder ofLast14Days(DateRange $customRange = null)
+ * @method static Builder ofLast21Days(DateRange $customRange = null)
+ * @method static Builder ofLast30Days(DateRange $customRange = null)
+ * @method static Builder ofLastDays(int $days, DateRange $customRange = null)
+ *
+ * @method static Builder ofLastWeek()
+ * @method static Builder ofLast2Weeks(DateRange $customRange = null)
+ * @method static Builder ofLast3Weeks(DateRange $customRange = null)
+ * @method static Builder ofLast4Weeks(DateRange $customRange = null)
+ * @method static Builder ofLastWeeks(int $weeks, DateRange $customRange = null)
+ *
+ * @method static Builder ofLastMonth()
+ * @method static Builder ofLast3Months(DateRange $customRange = null)
+ * @method static Builder ofLast6Months(DateRange $customRange = null)
+ * @method static Builder ofLast9Months(DateRange $customRange = null)
+ * @method static Builder ofLast12Months(DateRange $customRange = null)
+ * @method static Builder ofLastMonths(int $months, DateRange $customRange = null)
+ *
+ * @method static Builder ofLastQuarter()
+ * @method static Builder ofLast2Quarters(DateRange $customRange = null)
+ * @method static Builder ofLast3Quarters(DateRange $customRange = null)
+ * @method static Builder ofLast4Quarters(DateRange $customRange = null)
+ * @method static Builder ofLastQuarters(int $quarters, DateRange $customRange = null)
+ *
+ * @method static Builder ofLastYear()
+ * @method static Builder ofLastYears(int $years, DateRange $customRange = null)
+ *
+ * @method static Builder ofLastDecade()
+ * @method static Builder ofLastDecades(int $decades, DateRange $customRange = null)
+ *
+ * @method static Builder ofLastMillennium()
+ * @method static Builder ofLastMillenniums(int $millennium, DateRange $customRange = null)
+ *
+ * @method static Builder secondToNow()
+ * @method static Builder minuteToNow()
+ * @method static Builder hourToNow()
+ * @method static Builder dayToNow()
+ * @method static Builder weekToDate()
+ * @method static Builder monthToDate()
+ * @method static Builder quarterToDate()
+ * @method static Builder yearToDate()
+ * @method static Builder decadeToDate()
+ * @method static Builder millenniumToDate()
+ */
 trait DateScopes
 {
     /**
