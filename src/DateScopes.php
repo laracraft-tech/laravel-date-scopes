@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @method static Builder ofLastUnit(string $dateUnit, int $value, DateRange $customRange = null)
- * @method static Builder ofJustNow()
  *
+ * @method static Builder ofJustNow()
  * @method static Builder ofLastSecond()
  * @method static Builder ofLast15Seconds(DateRange $customRange = null)
  * @method static Builder ofLast30Seconds(DateRange $customRange = null)
@@ -62,6 +62,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder ofLastDecade()
  * @method static Builder ofLastDecades(int $decades, DateRange $customRange = null)
  *
+ * @method static Builder ofLastCentury()
+ * @method static Builder ofLastCenturies(int $decades, DateRange $customRange = null)
+ *
  * @method static Builder ofLastMillennium()
  * @method static Builder ofLastMillenniums(int $millennium, DateRange $customRange = null)
  *
@@ -74,6 +77,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder quarterToDate()
  * @method static Builder yearToDate()
  * @method static Builder decadeToDate()
+ * @method static Builder centuryToDate()
  * @method static Builder millenniumToDate()
  */
 trait DateScopes
