@@ -213,6 +213,12 @@ Transaction::ofLastDecades(2); // query transactions created during the last N d
 
 ### Centuries
 
+The **centuries** may return a different range then you maybe would expect. For instance `Transaction::ofLastCentury()` would apply a range from 1901-01-01 00:00:00 to 2000-12-31 23:59:59.
+Maybe you would expect a range from: 1900-01-01 00:00:00 to 1999-12-31 23:59:59.
+
+Checkout Wikipedia for this behavior: https://en.wikipedia.org/wiki/19th_century
+
+
 ```php
 // query by CENTURIES
 Transaction::ofLastCentury(); // query transactions created during the last century
@@ -220,6 +226,11 @@ Transaction::ofLastCenturies(2); // query transactions created during the last N
 ```
 
 ### Millenniums
+
+The **millenniums** may return a different range then you maybe would expect. For instance `Transaction::ofLastMillennium()` would apply a range from 1001-01-01 00:00:00 to 2000-12-31 23:59:59.
+Maybe you would expect a range from: 1000-01-01 00:00:00 to 1999-12-31 23:59:59.
+
+Checkout Wikipedia for this behavior: https://en.wikipedia.org/wiki/2nd_millennium
 
 ```php
 // query by MILLENNIUMS
