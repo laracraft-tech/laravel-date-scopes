@@ -64,122 +64,122 @@ beforeEach(function () {
 });
 
 it('retrieves transactions of last seconds', function () {
-    expect(Transaction::ofJustNow()->get())->toHaveCount(1);
-    expect(Transaction::ofLastSecond()->get())->toHaveCount(1);
-    expect(Transaction::ofLast15Seconds()->get())->toHaveCount(2);
-    expect(Transaction::ofLast30Seconds()->get())->toHaveCount(3);
-    expect(Transaction::ofLast45Seconds()->get())->toHaveCount(4);
-    expect(Transaction::ofLast60Seconds()->get())->toHaveCount(5);
-    expect(Transaction::ofLastSeconds(120)->get())->toHaveCount(6);
+    expect(Transaction::ofJustNow()->get())->toHaveCount(1)
+        ->and(Transaction::ofLastSecond()->get())->toHaveCount(1)
+        ->and(Transaction::ofLast15Seconds()->get())->toHaveCount(2)
+        ->and(Transaction::ofLast30Seconds()->get())->toHaveCount(3)
+        ->and(Transaction::ofLast45Seconds()->get())->toHaveCount(4)
+        ->and(Transaction::ofLast60Seconds()->get())->toHaveCount(5)
+        ->and(Transaction::ofLastSeconds(120)->get())->toHaveCount(6);
 });
 
 it('retrieves transactions of last minutes', function () {
-    expect(Transaction::ofLastMinute()->get())->toHaveCount(3);
-    expect(Transaction::ofLast15Minutes()->get())->toHaveCount(4);
-    expect(Transaction::ofLast30Minutes()->get())->toHaveCount(5);
-    expect(Transaction::ofLast45Minutes()->get())->toHaveCount(6);
-    expect(Transaction::ofLast60Minutes()->get())->toHaveCount(7);
-    expect(Transaction::ofLastMinutes(120)->get())->toHaveCount(8);
+    expect(Transaction::ofLastMinute()->get())->toHaveCount(3)
+        ->and(Transaction::ofLast15Minutes()->get())->toHaveCount(4)
+        ->and(Transaction::ofLast30Minutes()->get())->toHaveCount(5)
+        ->and(Transaction::ofLast45Minutes()->get())->toHaveCount(6)
+        ->and(Transaction::ofLast60Minutes()->get())->toHaveCount(7)
+        ->and(Transaction::ofLastMinutes(120)->get())->toHaveCount(8);
 });
 
 it('retrieves transactions of last hours', function () {
-    expect(Transaction::ofLastHour()->get())->toHaveCount(3);
-    expect(Transaction::ofLast6Hours()->get())->toHaveCount(4);
-    expect(Transaction::ofLast12Hours()->get())->toHaveCount(5);
-    expect(Transaction::ofLast18Hours()->get())->toHaveCount(6);
-    expect(Transaction::ofLast24Hours()->get())->toHaveCount(7);
-    expect(Transaction::ofLastHours(48)->get())->toHaveCount(8);
+    expect(Transaction::ofLastHour()->get())->toHaveCount(3)
+        ->and(Transaction::ofLast6Hours()->get())->toHaveCount(4)
+        ->and(Transaction::ofLast12Hours()->get())->toHaveCount(5)
+        ->and(Transaction::ofLast18Hours()->get())->toHaveCount(6)
+        ->and(Transaction::ofLast24Hours()->get())->toHaveCount(7)
+        ->and(Transaction::ofLastHours(48)->get())->toHaveCount(8);
 });
 
 it('retrieves transactions of last days', function () {
-    expect(Transaction::ofToday()->get())->toHaveCount(12);
-    expect(Transaction::ofYesterday()->get())->toHaveCount(2);
-    expect(Transaction::ofLast7Days()->get())->toHaveCount(3);
-    expect(Transaction::ofLast14Days()->get())->toHaveCount(5);
-    expect(Transaction::ofLast21Days()->get())->toHaveCount(6);
-    expect(Transaction::ofLast30Days()->get())->toHaveCount(7);
-    expect(Transaction::ofLastDays(48)->get())->toHaveCount(8);
+    expect(Transaction::ofToday()->get())->toHaveCount(12)
+        ->and(Transaction::ofYesterday()->get())->toHaveCount(2)
+        ->and(Transaction::ofLast7Days()->get())->toHaveCount(3)
+        ->and(Transaction::ofLast14Days()->get())->toHaveCount(5)
+        ->and(Transaction::ofLast21Days()->get())->toHaveCount(6)
+        ->and(Transaction::ofLast30Days()->get())->toHaveCount(7)
+        ->and(Transaction::ofLastDays(48)->get())->toHaveCount(8);
 });
 
 it('retrieves transactions of last weeks', function () {
-    expect(Transaction::ofLastWeek()->get())->toHaveCount(1);
-    expect(Transaction::ofLast2Weeks()->get())->toHaveCount(2);
-    expect(Transaction::ofLast3Weeks()->get())->toHaveCount(3);
-    expect(Transaction::ofLast4Weeks()->get())->toHaveCount(4);
-    expect(Transaction::ofLastWeeks(8)->get())->toHaveCount(5);
+    expect(Transaction::ofLastWeek()->get())->toHaveCount(1)
+        ->and(Transaction::ofLast2Weeks()->get())->toHaveCount(2)
+        ->and(Transaction::ofLast3Weeks()->get())->toHaveCount(3)
+        ->and(Transaction::ofLast4Weeks()->get())->toHaveCount(4)
+        ->and(Transaction::ofLastWeeks(8)->get())->toHaveCount(5);
 });
 
 it('retrieves transactions of last months', function () {
-    expect(Transaction::ofLastMonth()->get())->toHaveCount(1);
-    expect(Transaction::ofLast3Months()->get())->toHaveCount(2);
-    expect(Transaction::ofLast6Months()->get())->toHaveCount(3);
-    expect(Transaction::ofLast9Months()->get())->toHaveCount(4);
-    expect(Transaction::ofLast12Months()->get())->toHaveCount(5);
-    expect(Transaction::ofLastMonths(24)->get())->toHaveCount(6);
+    expect(Transaction::ofLastMonth()->get())->toHaveCount(1)
+        ->and(Transaction::ofLast3Months()->get())->toHaveCount(2)
+        ->and(Transaction::ofLast6Months()->get())->toHaveCount(3)
+        ->and(Transaction::ofLast9Months()->get())->toHaveCount(4)
+        ->and(Transaction::ofLast12Months()->get())->toHaveCount(5)
+        ->and(Transaction::ofLastMonths(24)->get())->toHaveCount(6);
 });
 
 it('retrieves transactions of last quarters', function () {
-    expect(Transaction::ofLastQuarter()->get())->toHaveCount(1);
-    expect(Transaction::ofLast2Quarters()->get())->toHaveCount(2);
-    expect(Transaction::ofLast3Quarters()->get())->toHaveCount(3);
-    expect(Transaction::ofLast4Quarters()->get())->toHaveCount(4);
-    expect(Transaction::ofLastQuarters(8)->get())->toHaveCount(5);
+    expect(Transaction::ofLastQuarter()->get())->toHaveCount(1)
+        ->and(Transaction::ofLast2Quarters()->get())->toHaveCount(2)
+        ->and(Transaction::ofLast3Quarters()->get())->toHaveCount(3)
+        ->and(Transaction::ofLast4Quarters()->get())->toHaveCount(4)
+        ->and(Transaction::ofLastQuarters(8)->get())->toHaveCount(5);
 });
 
 it('retrieves transactions of last years', function () {
-    expect(Transaction::ofLastYear()->get())->toHaveCount(4);
-    expect(Transaction::ofLastYears(2)->get())->toHaveCount(5);
+    expect(Transaction::ofLastYear()->get())->toHaveCount(4)
+        ->and(Transaction::ofLastYears(2)->get())->toHaveCount(5);
 });
 
 it('retrieves transactions of last decades', function () {
-    expect(Transaction::ofLastDecade()->get())->toHaveCount(1);
-    expect(Transaction::ofLastDecades(2)->get())->toHaveCount(2);
+    expect(Transaction::ofLastDecade()->get())->toHaveCount(1)
+        ->and(Transaction::ofLastDecades(2)->get())->toHaveCount(2);
 });
 
 it('retrieves transactions of last centuries', function () {
-    expect(Transaction::ofLastCentury()->get())->toHaveCount(1);
-    expect(Transaction::ofLastCenturies(2)->get())->toHaveCount(2);
+    expect(Transaction::ofLastCentury()->get())->toHaveCount(1)
+        ->and(Transaction::ofLastCenturies(2)->get())->toHaveCount(2);
 });
 
 it('retrieves transactions of last millenniums', function () {
-    expect(Transaction::ofLastMillennium()->get())->toHaveCount(2);
-    expect(Transaction::ofLastMillenniums(2)->get())->toHaveCount(3);
+    expect(Transaction::ofLastMillennium()->get())->toHaveCount(2)
+        ->and(Transaction::ofLastMillenniums(2)->get())->toHaveCount(3);
 });
 
 it('retrieves transactions of toNow/toDate', function () {
-    expect(Transaction::secondToNow()->get())->toHaveCount(1);
-    expect(Transaction::minuteToNow()->get())->toHaveCount(3);
-    expect(Transaction::hourToNow()->get())->toHaveCount(7);
-    expect(Transaction::dayToNow()->get())->toHaveCount(12);
-    expect(Transaction::weekToDate()->get())->toHaveCount(15);
-    expect(Transaction::monthToDate()->get())->toHaveCount(19);
-    expect(Transaction::quarterToDate()->get())->toHaveCount(20);
-    expect(Transaction::yearToDate()->get())->toHaveCount(20);
-    expect(Transaction::decadeToDate()->get())->toHaveCount(25);
-    expect(Transaction::centuryToDate()->get())->toHaveCount(26);
-    expect(Transaction::millenniumToDate()->get())->toHaveCount(26);
+    expect(Transaction::secondToNow()->get())->toHaveCount(1)
+        ->and(Transaction::minuteToNow()->get())->toHaveCount(3)
+        ->and(Transaction::hourToNow()->get())->toHaveCount(7)
+        ->and(Transaction::dayToNow()->get())->toHaveCount(12)
+        ->and(Transaction::weekToDate()->get())->toHaveCount(15)
+        ->and(Transaction::monthToDate()->get())->toHaveCount(19)
+        ->and(Transaction::quarterToDate()->get())->toHaveCount(20)
+        ->and(Transaction::yearToDate()->get())->toHaveCount(20)
+        ->and(Transaction::decadeToDate()->get())->toHaveCount(25)
+        ->and(Transaction::centuryToDate()->get())->toHaveCount(26)
+        ->and(Transaction::millenniumToDate()->get())->toHaveCount(26);
 });
 
 it('retrieves transactions of last x (inclusive config date range)', function () {
     config(['date-scopes.default_range' => DateRange::INCLUSIVE->value]);
 
-    expect(Transaction::ofLast15Minutes()->get())->toHaveCount(7);
-    expect(Transaction::ofLast12Hours()->get())->toHaveCount(11);
-    expect(Transaction::ofLast21Days()->get())->toHaveCount(17);
-    expect(Transaction::ofLast3Weeks()->get())->toHaveCount(17);
-    expect(Transaction::ofLast12Months()->get())->toHaveCount(23);
-    expect(Transaction::ofLastQuarters(8)->get())->toHaveCount(24);
-    expect(Transaction::ofLastYear()->get())->toHaveCount(4);
-    expect(Transaction::ofLastDecade()->get())->toHaveCount(1);
-    expect(Transaction::ofLastCentury()->get())->toHaveCount(1);
-    expect(Transaction::ofLastMillennium()->get())->toHaveCount(2);
+    expect(Transaction::ofLast15Minutes()->get())->toHaveCount(7)
+        ->and(Transaction::ofLast12Hours()->get())->toHaveCount(11)
+        ->and(Transaction::ofLast21Days()->get())->toHaveCount(17)
+        ->and(Transaction::ofLast3Weeks()->get())->toHaveCount(17)
+        ->and(Transaction::ofLast12Months()->get())->toHaveCount(23)
+        ->and(Transaction::ofLastQuarters(8)->get())->toHaveCount(24)
+        ->and(Transaction::ofLastYear()->get())->toHaveCount(4)
+        ->and(Transaction::ofLastDecade()->get())->toHaveCount(1)
+        ->and(Transaction::ofLastCentury()->get())->toHaveCount(1)
+        ->and(Transaction::ofLastMillennium()->get())->toHaveCount(2);
 });
 
 it('retrieves transactions of last x (inclusive fluent date range)', function () {
-    expect(Transaction::ofLast15Minutes(DateRange::INCLUSIVE)->get())->toHaveCount(7);
-    expect(Transaction::ofLast12Hours(DateRange::INCLUSIVE)->get())->toHaveCount(11);
-    expect(Transaction::ofLast21Days(DateRange::INCLUSIVE)->get())->toHaveCount(17);
-    expect(Transaction::ofLast3Weeks(DateRange::INCLUSIVE)->get())->toHaveCount(17);
-    expect(Transaction::ofLast12Months(DateRange::INCLUSIVE)->get())->toHaveCount(23);
-    expect(Transaction::ofLastQuarters(8, DateRange::INCLUSIVE)->get())->toHaveCount(24);
+    expect(Transaction::ofLast15Minutes(DateRange::INCLUSIVE)->get())->toHaveCount(7)
+        ->and(Transaction::ofLast12Hours(DateRange::INCLUSIVE)->get())->toHaveCount(11)
+        ->and(Transaction::ofLast21Days(DateRange::INCLUSIVE)->get())->toHaveCount(17)
+        ->and(Transaction::ofLast3Weeks(DateRange::INCLUSIVE)->get())->toHaveCount(17)
+        ->and(Transaction::ofLast12Months(DateRange::INCLUSIVE)->get())->toHaveCount(23)
+        ->and(Transaction::ofLastQuarters(8, DateRange::INCLUSIVE)->get())->toHaveCount(24);
 });
