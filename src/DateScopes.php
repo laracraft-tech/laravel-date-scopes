@@ -135,7 +135,9 @@ trait DateScopes
 //        if (defined('DATE_SCOPE_DEBUG'))
 //            dd(collect($range)->transform(fn ($item) => $item->format('Y-m-d H:i:s'))->toArray());
 
-        return $query->whereBetween(config('date-scopes.created_column'), $range);
+        $createdColumnName = (self::CREATED_AT != 'created_at') ? self::CREATED_AT : config('date-scopes.created_column');
+
+        return $query->whereBetween($createdColumnName, $range);
     }
 
     // START SECONDS

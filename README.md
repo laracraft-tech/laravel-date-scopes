@@ -63,7 +63,7 @@ return [
     'default_range' => env('DATE_SCOPES_DEFAULT_RANGE', DateRange::EXCLUSIVE->value),
 
     /**
-     * If you have a custom created_at column name, change it here.
+     * If you use a global custom created_at column name, change it here.
      */
     'created_column' => env('DATE_SCOPES_CREATED_COLUMN', 'created_at'),
 ];
