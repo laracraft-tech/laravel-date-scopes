@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-date-scopes` will be documented in this file.
 
+## v1.1.0 - 2023-05-02
+
+### What's Changed
+
+- support for custom created_at column names per model #5
+
 ## v1.0.6 - 2023-04-17
 
 ### Added
