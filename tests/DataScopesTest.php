@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Carbon;
 use LaracraftTech\LaravelDateScopes\DateRange;
+use LaracraftTech\LaravelDateScopes\Tests\Models\CustomTransaction;
 use LaracraftTech\LaravelDateScopes\Tests\Models\Transaction;
 
 function getCreatedAtValues(): array
@@ -182,4 +183,31 @@ it('retrieves transactions of last x (inclusive fluent date range)', function ()
         ->and(Transaction::ofLast3Weeks(DateRange::INCLUSIVE)->get())->toHaveCount(17)
         ->and(Transaction::ofLast12Months(DateRange::INCLUSIVE)->get())->toHaveCount(23)
         ->and(Transaction::ofLastQuarters(8, DateRange::INCLUSIVE)->get())->toHaveCount(24);
+});
+
+it('also works with a custom created_at column name', function() {
+    Schema::create('custom_transactions', function (Blueprint $blueprint) {
+        $blueprint->id();
+        $blueprint->string('col1');
+        $blueprint->integer('col2');
+        $blueprint->timestamp('custom_created_at')->nullable();
+    });
+
+    $start = '2023-03-31 13:15:15';
+    Carbon::setTestNow(Carbon::parse($start));
+
+    $createdAtValues = [
+        ['custom_created_at' => '2023-03-31 13:05:14'],
+        ['custom_created_at' => '2022-03-31 13:15:00'],
+        ['custom_created_at' => '2013-03-31 13:13:15']
+    ];
+
+    CustomTransaction::factory()
+        ->count(count($createdAtValues))
+        ->state(new Sequence(...$createdAtValues))
+        ->create();
+
+    expect(CustomTransaction::ofLast15Minutes()->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLastYear()->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLastDecade()->get())->toHaveCount(1);
 });
