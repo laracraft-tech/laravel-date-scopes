@@ -71,7 +71,7 @@ return [
 
 If you want to change the default range to inclusive set `DATE_SCOPES_DEFAULT_RANGE=inclusive` in your `.env`.
 
-### Fluent configuration
+### Fluent date range configuration
 
 As already mentioned above in the `default_range` config description text,
 you can also fluently specify the range for quite every scope we offer
@@ -84,6 +84,25 @@ Transaction::ofLast7Days(DateRange::INCLUSIVE);
 ```
 
 This will do an inclusive query (today-6 days), even though the global default range here was set to exclusive.
+
+### Fluent created_at column configuration
+
+If you only want to change the ```created_at``` field in one of your models and not globally just do: 
+
+```php
+use LaracraftTech\LaravelDateScopes\DateScopes;
+
+class Transaction extends Model
+{
+    use DateScopes;
+    
+    public $timestamps = false;
+
+    const CREATED_AT = 'custom_created_at';
+}
+// also make sure to omit the defalt $table->timestamps() function in your migration
+// and use something like this instead: $table->timestamp('custom_created_at')->nullable();
+```
 
 ## Scopes
 
