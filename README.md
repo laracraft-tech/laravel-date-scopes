@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laracraft-tech/laravel-date-scopes.svg?style=flat-square)](https://packagist.org/packages/laracraft-tech/laravel-date-scopes)
 [![Tests](https://github.com/laracraft-tech/laravel-date-scopes/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/laracraft-tech/laravel-date-scopes/actions/workflows/run-tests.yml)
 [![License](https://img.shields.io/packagist/l/laracraft-tech/laravel-date-scopes.svg?style=flat-square)](https://packagist.org/packages/laracraft-tech/laravel-date-scopes)
-<!--[![Total Downloads](https://img.shields.io/packagist/dt/laracraft-tech/laravel-date-scopes.svg?style=flat-square)](https://packagist.org/packages/laracraft-tech/laravel-date-scopes)-->
+[![Total Downloads](https://img.shields.io/packagist/dt/laracraft-tech/laravel-date-scopes.svg?style=flat-square)](https://packagist.org/packages/laracraft-tech/laravel-date-scopes)
 
 The package provides a big range of useful date scopes for your Laravel Eloquent models!
 
