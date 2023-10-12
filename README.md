@@ -24,7 +24,7 @@ Transaction::ofToday();
 Transaction::ofLastWeek();
  // query transactions created during the start of the current month till now
 Transaction::monthToDate();
- // query transactions created during the last year, starting from 2020
+ // query transactions created during the last year, start from 2020
 Transaction::ofLastYear(startFrom: '2020-01-01');
 
 // ... and much more scopes are available (see below)
