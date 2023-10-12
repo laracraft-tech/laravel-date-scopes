@@ -5,7 +5,36 @@
 [![License](https://img.shields.io/packagist/l/laracraft-tech/laravel-date-scopes.svg?style=flat-square)](https://packagist.org/packages/laracraft-tech/laravel-date-scopes)
 [![Total Downloads](https://img.shields.io/packagist/dt/laracraft-tech/laravel-date-scopes.svg?style=flat-square)](https://packagist.org/packages/laracraft-tech/laravel-date-scopes)
 
-The package provides a big range of useful date scopes for your Laravel Eloquent models!
+This package provides a big range of useful **date scopes** for your Laravel Eloquent models!
+
+Let's assume you have a `Transaction` model.
+If you now give it the `DateScopes` trait, you can do something like this:
+
+```php
+use LaracraftTech\LaravelDateScopes\DateScopes;
+
+class Transaction extends Model
+{
+    use DateScopes;
+}
+
+Transaction::ofToday(); // query transactions created today
+Transaction::ofLastWeek(); // query transactions created during the last week
+Transaction::monthToDate(); // query transactions created during the start of the current month till now
+Transaction::ofLastYear(startFrom: '2020-01-01') // query transactions created during the last year, starting from 2020
+// ... and much more scopes are available (see below)
+
+// For sure, you can chain any Builder function you want here.
+// Such as these aggregations, for instance:
+Transaction::ofToday()->sum('amount');
+Transaction::ofLastWeek()->avg('amount');
+```
+
+## ToC
+
+- [`Installation`](#installation)
+- [`Configuration`](#configuration)
+- [`Scopes`](#scopes)
 
 ## Installation
 
@@ -57,7 +86,7 @@ return [
      * you could use the inclusive range here as a default.
      * Note that you can also fluently specify the range for quite every scope we offer
      * directly when using the scope:
-     * Transaction::ofLast7Days(DateRange::INCLUSIVE); (this works for all but the singular "ofLast"-scopes)
+     * Transaction::ofLast7Days(customRange: DateRange::INCLUSIVE); (this works for all but the singular "ofLast"-scopes)
      * This will do an inclusive query, even though the global default range here is set to exclusive.
      */
     'default_range' => env('DATE_SCOPES_DEFAULT_RANGE', DateRange::EXCLUSIVE->value),
@@ -80,14 +109,14 @@ directly when using the scope:
 ```php
 // This works for all "ofLast"-scopes, expect the singulars like "ofLastHour",
 // because it would not make sense for those.
-Transaction::ofLast7Days(DateRange::INCLUSIVE);
+Transaction::ofLast7Days(customRange: DateRange::INCLUSIVE);
 ```
 
 This will do an inclusive query (today-6 days), even though the global default range here was set to exclusive.
 
 ### Fluent created_at column configuration
 
-If you only want to change the ```created_at``` field in one of your models and not globally just do: 
+If you only want to change the ```created_at``` field in one of your models and not globally just do:
 
 ```php
 use LaracraftTech\LaravelDateScopes\DateScopes;
@@ -100,8 +129,17 @@ class Transaction extends Model
 
     const CREATED_AT = 'custom_created_at';
 }
-// also make sure to omit the defalt $table->timestamps() function in your migration
+// also make sure to omit the default $table->timestamps() function in your migration
 // and use something like this instead: $table->timestamp('custom_created_at')->nullable();
+```
+
+### Custom start date
+
+If you want data not starting from now, but from another date, you can do this with:
+
+```php
+// query transactions created during 2019-2020
+Transaction::ofLastYear(startFrom: '2020-01-01')
 ```
 
 ## Scopes
@@ -118,18 +156,6 @@ class Transaction extends Model
 - [`centuries`](#centuries)
 - [`millenniums`](#millenniums)
 - [`toNow/toDate`](#toNowtoDate)
- 
-Let's assume you have an `Transaction` model class.
-Now when you give it the `DateScopes` trait, you can use the following scopes:
-
-```php
-use LaracraftTech\LaravelDateScopes\DateScopes;
-
-class Transaction extends Model
-{
-    use DateScopes;
-}
-```
 
 ### Seconds
 
@@ -280,7 +306,11 @@ Transaction::millenniumToDate(); // query transactions created during the start 
 composer test
 ```
 
-## Changelog
+## Upgrading
+
+Please see [UPGRADING](UPGRADING.md) for details.
+
+### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
@@ -288,7 +318,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security Vulnerabilities
+## Security
 
 Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 

@@ -17,10 +17,10 @@ function getCreatedAtValues(): array
         ['created_at' => $start],
         ['created_at' => '2023-03-31 13:15:14'],
         ['created_at' => '2023-03-31 13:15:00'],
-        ['created_at' => '2023-03-31 13:13:15'],
         ['created_at' => '2023-03-31 13:14:45'],
         ['created_at' => '2023-03-31 13:14:30'],
         ['created_at' => '2023-03-31 13:14:15'],
+        ['created_at' => '2023-03-31 13:13:15'],
         ['created_at' => '2023-03-31 12:45:00'],
         ['created_at' => '2023-03-31 12:30:00'],
         ['created_at' => '2023-03-31 12:15:00'],
@@ -177,12 +177,12 @@ it('retrieves transactions of last x (inclusive config date range)', function ()
 });
 
 it('retrieves transactions of last x (inclusive fluent date range)', function () {
-    expect(Transaction::ofLast15Minutes(DateRange::INCLUSIVE)->get())->toHaveCount(7)
-        ->and(Transaction::ofLast12Hours(DateRange::INCLUSIVE)->get())->toHaveCount(11)
-        ->and(Transaction::ofLast21Days(DateRange::INCLUSIVE)->get())->toHaveCount(17)
-        ->and(Transaction::ofLast3Weeks(DateRange::INCLUSIVE)->get())->toHaveCount(17)
-        ->and(Transaction::ofLast12Months(DateRange::INCLUSIVE)->get())->toHaveCount(23)
-        ->and(Transaction::ofLastQuarters(8, DateRange::INCLUSIVE)->get())->toHaveCount(24);
+    expect(Transaction::ofLast15Minutes(customRange: DateRange::INCLUSIVE)->get())->toHaveCount(7)
+        ->and(Transaction::ofLast12Hours(customRange: DateRange::INCLUSIVE)->get())->toHaveCount(11)
+        ->and(Transaction::ofLast21Days(customRange: DateRange::INCLUSIVE)->get())->toHaveCount(17)
+        ->and(Transaction::ofLast3Weeks(customRange: DateRange::INCLUSIVE)->get())->toHaveCount(17)
+        ->and(Transaction::ofLast12Months(customRange: DateRange::INCLUSIVE)->get())->toHaveCount(23)
+        ->and(Transaction::ofLastQuarters(8, customRange: DateRange::INCLUSIVE)->get())->toHaveCount(24);
 });
 
 it('also works with a custom created_at column name', function() {
@@ -210,4 +210,10 @@ it('also works with a custom created_at column name', function() {
     expect(CustomTransaction::ofLast15Minutes()->get())->toHaveCount(1)
         ->and(CustomTransaction::ofLastYear()->get())->toHaveCount(1)
         ->and(CustomTransaction::ofLastDecade()->get())->toHaveCount(1);
+});
+
+it('retrieves transactions of last x (with startFrom)', function () {
+    expect(Transaction::ofLastMinute(startFrom: '2023-03-31 13:15:00')->get())->toHaveCount(3)
+        ->and(Transaction::ofYesterday(startFrom: '2023-03-31 13:15:00')->get())->toHaveCount(2)
+        ->and(Transaction::ofLastWeek(startFrom: '2023-03-31 13:15:00')->get())->toHaveCount(1);
 });

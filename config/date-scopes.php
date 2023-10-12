@@ -8,7 +8,7 @@ return [
      * you could use the inclusive range here as a default.
      * Note that you can also fluently specify it for quite every scope we offer
      * directly when using the scope:
-     * Transaction::ofLast7Days(DateRange::INCLUSIVE); (this works for all but the singular "ofLast"-scopes)
+     * Transaction::ofLast7Days(customRange: DateRange::INCLUSIVE); (this works for all but the singular "ofLast"-scopes)
      * This will do an inclusive query, even though the global default range here is set to exclusive.
      */
     'default_range' => env('DATE_SCOPES_DEFAULT_RANGE', DateRange::EXCLUSIVE->value),
