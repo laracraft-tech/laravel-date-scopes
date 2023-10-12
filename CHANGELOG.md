@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-date-scopes` will be documented in this file.
 
+## v2.0.1 - 2023-10-12
+
+### What's changed
+
+- fixed php doc block
+
 ## v2.0.0 - 2023-10-12
 
 ### What's Changed
