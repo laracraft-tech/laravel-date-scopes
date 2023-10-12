@@ -18,10 +18,15 @@ class Transaction extends Model
     use DateScopes;
 }
 
-Transaction::ofToday(); // query transactions created today
-Transaction::ofLastWeek(); // query transactions created during the last week
-Transaction::monthToDate(); // query transactions created during the start of the current month till now
-Transaction::ofLastYear(startFrom: '2020-01-01') // query transactions created during the last year, starting from 2020
+// query transactions created today
+Transaction::ofToday();
+ // query transactions created during the last week
+Transaction::ofLastWeek();
+ // query transactions created during the start of the current month till now
+Transaction::monthToDate();
+ // query transactions created during the last year, start from 2020
+Transaction::ofLastYear(startFrom: '2020-01-01');
+
 // ... and much more scopes are available (see below)
 
 // For sure, you can chain any Builder function you want here.
@@ -34,6 +39,10 @@ Transaction::ofLastWeek()->avg('amount');
 
 - [`Installation`](#installation)
 - [`Configuration`](#configuration)
+  - [`Global configuration`](#global-configuration)
+  - [`Fluent date range configuration`](#fluent-date-range-configuration)
+  - [`Fluent created_at column configuration`](#fluent-date-range-configuration)
+  - [`Custom start date`](#custom-start-date)
 - [`Scopes`](#scopes)
 
 ## Installation

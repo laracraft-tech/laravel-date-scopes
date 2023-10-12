@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-date-scopes` will be documented in this file.
 
+## v2.0.0 - 2023-10-12
+
+### What's Changed
+
+- you can now pass `startFrom` as a parameter to query between certain ranges. For instance: `Transaction::ofLastYear(startFrom: '2020-01-01')`. You may need to change the order of your arguments or use named arguments. Checkout [UPGRADING](https://github.com/laracraft-tech/laravel-date-scopes/blob/main/UPGRADING.md) file for that.
+
 ## v1.1.1 - 2023-05-02
 
 ### What's Changed
