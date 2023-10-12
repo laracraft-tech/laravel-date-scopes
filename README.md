@@ -39,7 +39,8 @@ Transaction::ofLastWeek()->avg('amount');
 
 - [`Installation`](#installation)
 - [`Configuration`](#configuration)
-  - [`Global Configuration`](#global-configuration)
+  - [`Global configuration`](#global-configuration)
+  - [`Fluent date range configuration`](#fluent-date-range-configuration)
   - [`Fluent created_at column configuration`](#fluent-date-range-configuration)
   - [`Custom start date`](#custom-start-date)
 - [`Scopes`](#scopes)
