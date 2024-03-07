@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-date-scopes` will be documented in this file.
 
+## v2.1.0 - 2024-03-07
+
+* Laravel 11 Support
+
 ## v2.0.1 - 2023-10-12
 
 ### What's changed
