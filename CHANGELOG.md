@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-date-scopes` will be documented in this file.
 
+## v2.2.0 - 2024-07-02
+
+### What's changed
+
+* Carbon 3 support by @keatliang2005
+
 ## v2.1.0 - 2024-03-07
 
 * Laravel 11 Support
