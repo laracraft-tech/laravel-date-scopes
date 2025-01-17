@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-date-scopes` will be documented in this file.
 
+## v2.2.1 - 2025-01-17
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/laracraft-tech/laravel-date-scopes/pull/20
+* Fix some PHP 8.4 deprecations by @ziming in https://github.com/laracraft-tech/laravel-date-scopes/pull/21
+
+### New Contributors
+
+* @ziming made their first contribution in https://github.com/laracraft-tech/laravel-date-scopes/pull/21
+
+**Full Changelog**: https://github.com/laracraft-tech/laravel-date-scopes/compare/v2.2.0...v2.2.1
+
 ## v2.2.0 - 2024-07-02
 
 ### What's changed
