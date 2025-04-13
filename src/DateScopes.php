@@ -274,14 +274,13 @@ trait DateScopes
 
     public function scopeSecondToNow(Builder $query, ?string $column = null): Builder {return $query->ofLastSeconds(1, customRange: DateRange::INCLUSIVE, column: $column);}
     public function scopeMinuteToNow(Builder $query, ?string $column = null): Builder {return $query->ofLastMinutes(1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeHourToNow(Builder $query, ?string $column = null): Builder {return $query->ofLastHours($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeDayToNow(Builder $query, ?string $column = null): Builder {return $query->ofLastDays($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeWeekToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastWeeks($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeMonthToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastMonths($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeQuarterToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastQuarters($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeYearToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastYears($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeDecadeToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastDecades($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeCenturyToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastCenturies($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
-    public function scopeMillenniumToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastMillenniums($column, 1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeHourToNow(Builder $query, ?string $column = null): Builder {return $query->ofLastHours(1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeDayToNow(Builder $query, ?string $column = null): Builder {return $query->ofLastDays(1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeWeekToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastWeeks(1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeMonthToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastMonths(1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeQuarterToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastQuarters(1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeYearToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastYears(1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeDecadeToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastDecades(1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeCenturyToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastCenturies(1, customRange: DateRange::INCLUSIVE, column: $column);}
+    public function scopeMillenniumToDate(Builder $query, ?string $column = null): Builder {return $query->ofLastMillenniums(1, customRange: DateRange::INCLUSIVE, column: $column);}
 }
-
