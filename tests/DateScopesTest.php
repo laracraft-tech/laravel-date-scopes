@@ -217,3 +217,71 @@ it('retrieves transactions of last x (with startFrom)', function () {
         ->and(Transaction::ofYesterday(startFrom: '2023-03-31 13:15:00')->get())->toHaveCount(2)
         ->and(Transaction::ofLastWeek(startFrom: '2023-03-31 13:15:00')->get())->toHaveCount(1);
 });
+
+it('also works with a custom datetime column', function() {
+    Schema::create('custom_transactions', function (Blueprint $blueprint) {
+        $blueprint->id();
+        $blueprint->string('col1');
+        $blueprint->integer('col2');
+        $blueprint->timestamp('custom_created_at')->default(now());
+        $blueprint->timestamp('approved_at')->nullable();
+    });
+
+    $start = '2023-03-31 13:15:15';
+    Carbon::setTestNow(Carbon::parse($start));
+
+    $approvedAtValues = [
+        ['approved_at' => '2023-03-31 13:05:14'],
+        ['approved_at' => '2022-03-31 13:15:00'],
+        ['approved_at' => '2013-03-31 13:13:15']
+    ];
+
+    CustomTransaction::factory()
+        ->count(count($approvedAtValues))
+        ->state(new Sequence(...$approvedAtValues))
+        ->create();
+
+    expect(CustomTransaction::ofLast15Minutes(column: 'approved_at')->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLastYear(column: 'approved_at')->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLastDecade(column: 'approved_at')->get())->toHaveCount(1);
+});
+
+it('also works with both created_at and custom datetime column', function() {
+    Schema::create('custom_transactions', function (Blueprint $blueprint) {
+        $blueprint->id();
+        $blueprint->string('col1');
+        $blueprint->integer('col2');
+        $blueprint->timestamp('custom_created_at')->default(now());
+        $blueprint->timestamp('approved_at')->nullable();
+    });
+
+    $start = '2023-03-31 13:15:15';
+    Carbon::setTestNow(Carbon::parse($start));
+
+    $values = [
+        [
+            'custom_created_at' => '2023-03-31 13:05:14',
+            'approved_at' => '2023-03-31 13:05:14',
+        ],
+        [
+            'custom_created_at' => '2022-03-31 13:15:00',
+            'approved_at' => '2022-03-31 13:15:00',
+        ],
+        [
+            'custom_created_at' => '2013-03-31 13:13:15',
+            'approved_at' => '2013-03-31 13:13:15'
+        ]
+    ];
+
+    CustomTransaction::factory()
+        ->count(count($values))
+        ->state(new Sequence(...$values))
+        ->create();
+
+    expect(CustomTransaction::ofLast15Minutes(column: 'custom_created_at')->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLastYear(column: 'custom_created_at')->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLastDecade(column: 'custom_created_at')->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLast15Minutes(column: 'approved_at')->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLastYear(column: 'approved_at')->get())->toHaveCount(1)
+        ->and(CustomTransaction::ofLastDecade(column: 'approved_at')->get())->toHaveCount(1);
+});

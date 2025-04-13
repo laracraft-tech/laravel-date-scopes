@@ -181,10 +181,10 @@ trait DateScopes
 
     // START HOURS
     public function scopeOfLastHour(Builder $query, $startFrom = null, ?string $column = null): Builder {return $query->ofLastHours(1, $startFrom, DateRange::EXCLUSIVE, $column);}
-    public function scopeOfLast6Hours(Builder $query, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder {return $query->ofLastHours($column, 6, $startFrom, $customRange, $column);}
-    public function scopeOfLast12Hours(Builder $query, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder {return $query->ofLastHours($column, 12, $startFrom, $customRange, $column);}
-    public function scopeOfLast18Hours(Builder $query, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder {return $query->ofLastHours($column, 18, $startFrom, $customRange, $column);}
-    public function scopeOfLast24Hours(Builder $query, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder {return $query->ofLastHours($column, 24, $startFrom, $customRange, $column);}
+    public function scopeOfLast6Hours(Builder $query, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder {return $query->ofLastHours(6, $startFrom, $customRange, $column);}
+    public function scopeOfLast12Hours(Builder $query, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder {return $query->ofLastHours( 12, $startFrom, $customRange, $column);}
+    public function scopeOfLast18Hours(Builder $query, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder {return $query->ofLastHours(18, $startFrom, $customRange, $column);}
+    public function scopeOfLast24Hours(Builder $query, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder {return $query->ofLastHours(24, $startFrom, $customRange, $column);}
 
     public function scopeOfLastHours(Builder $query, int $hours, $startFrom = null, ?DateRange $customRange = null, ?string $column = null): Builder
     {
