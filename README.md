@@ -147,9 +147,13 @@ class Transaction extends Model
 
 If you want data not starting from now, but from another date, you can do this with:
 
+### Custom datetime column
+
+If you want to use column other than `created_at` column, you can pass the column name as parameter to the scope:
+
+
 ```php
-// query transactions created during 2019-2020
-Transaction::ofLastYear(startFrom: '2020-01-01')
+Transaction::ofToday(column: 'approved_at')
 ```
 
 ## Scopes
