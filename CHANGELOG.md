@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-date-scopes` will be documented in this file.
 
+## v2.4.0 - 2025-04-24
+
+### What's Changed
+
+* feat: use scopes with other columns besides created_at by @aymanalhattami in https://github.com/laracraft-tech/laravel-date-scopes/pull/25
+
+### New Contributors
+
+* @aymanalhattami made their first contribution in https://github.com/laracraft-tech/laravel-date-scopes/pull/25
+
+**Full Changelog**: https://github.com/laracraft-tech/laravel-date-scopes/compare/v2.3.0...v2.4.0
+
 ## v2.3.0 - 2025-02-23
 
 ### What's Changed
