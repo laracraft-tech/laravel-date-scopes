@@ -11,6 +11,7 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
 
     strategy:
       fail-fast: true
@@ -29,16 +30,22 @@ jobs:
           - laravel: 12.*
             testbench: 10.*
         exclude:
-          - php: 8.1
-            laravel: 11.*
           - laravel: 12.*
             php: 8.1
+          - laravel: 12.*
+            stability: prefer-lowest
+          - laravel: 11.*
+            php: 8.1
+          - laravel: 11.*
+            stability: prefer-lowest
+          - laravel: 10.*
+            stability: prefer-lowest
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -61,4 +68,4 @@ jobs:
         run: composer show -D
 
       - name: Execute tests
-        run: vendor/bin/pest
+        run: vendor/bin/pest --ci
