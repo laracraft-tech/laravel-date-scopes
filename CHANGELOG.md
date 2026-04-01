@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-date-scopes` will be documented in this file.
 
+## v2.5.0 - 2026-04-01
+
+### What's Changed
+
+* laravel 13 support
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/laracraft-tech/laravel-date-scopes/pull/26
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/laracraft-tech/laravel-date-scopes/pull/27
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/laracraft-tech/laravel-date-scopes/pull/28
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/laracraft-tech/laravel-date-scopes/pull/32
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/laracraft-tech/laravel-date-scopes/pull/29
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/laracraft-tech/laravel-date-scopes/pull/35
+
+**Full Changelog**: https://github.com/laracraft-tech/laravel-date-scopes/compare/v2.4.0...v2.5.0
+
 ## v2.4.0 - 2025-04-24
 
 ### What's Changed
